@@ -1,3 +1,9 @@
+<?php 
+require_once './Controllers/Usuarios.php'; session_start();
+$loginId = isset($_POST['loginId']) ? $_POST['loginId'] : null;
+$senhaId = isset($_POST['senhaId']) ? $_POST['senhaId'] : null;
+$_SESSION['blabla'] = "opablza";
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,16 +11,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
 </head>
-<?php 
-session_start();
-$keysPost = ['loginId', 'senhaId'];
-$dataPost = [];
-
-foreach ($keysPost as $keysPost)
-{ $dataPost[$keysPost] = $_POST[$keysPost] ?? null; }
-
-?>
 <body>
+    <a href="./Cadastro.php">Cadastre-se</a>
     <form method="post">
     <label for="loginId">Login
         <input type="text" id="loginId" name="loginId">
@@ -24,9 +22,8 @@ foreach ($keysPost as $keysPost)
     </label>
     <input type="submit">
     </form>
-    <a href="./Cadastro.php">Cadastre-se</a>
     <?php
-
+    isset($loginId) ? validationUsr($loginId, $senhaId) : null;
      ?>
 </body>
 </html>

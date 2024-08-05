@@ -8,6 +8,7 @@
 <?PHP
 require_once './Controllers/Usuarios.php'; session_start();?>
 <body>
+    <a href="index.php">Voltar</a>
     <form method="post">
         <label for="loginUsr">Login
             <input type="text" name="loginUsr" id="loginUsr" required>
