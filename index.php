@@ -24,6 +24,7 @@ $_SESSION['blabla'] = "opablza";
     </form>
     <?php
     isset($loginId) ? validationUsr($loginId, $senhaId) : null;
+    echo $_SESSION['blabla'];
      ?>
 </body>
 </html>
