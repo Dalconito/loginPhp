@@ -1,11 +1,11 @@
 <?php
 
-function connectDB(){
+function connectDbLogin(){
     $servidor = "192.168.3.35"; $usuario = "dalconito"; $senha = "HelloWorld"; $banco = "usuarios"; $porta = "3366";
     $conexao = mysqli_connect($servidor,$usuario,$senha,$banco);
     return $conexao;}
 
-function getUsuarios($loginUsr){$conexao = connectDB();
+function getUsuarios($loginUsr){$conexao = connectDbLogin();
     $selectDbQuery = "SELECT * FROM usuarios WHERE loginUsr = ?";
     $prepQuery = $conexao->prepare($selectDbQuery);
     if($prepQuery == false) {die("Erro na preparação da consulta");}
@@ -14,7 +14,7 @@ function getUsuarios($loginUsr){$conexao = connectDB();
     $resultQuery = $resultDbQuery->fetch_assoc();
     $conexao->close(); return $resultQuery;}
 
-    function senhaUsuarios($loginUsr){$conexao = connectDB();
+    function senhaUsuarios($loginUsr){$conexao = connectDbLogin();
         $selectDbQuery = "SELECT senhaUsr FROM usuarios WHERE loginUsr = ?";
         $prepQuery = $conexao->prepare($selectDbQuery);
         if($prepQuery == false) {die("Erro na preparação da consulta");}
@@ -24,7 +24,7 @@ function getUsuarios($loginUsr){$conexao = connectDB();
         $conexao->close(); return $resultQuery;}
 
 function adicionarUsr($loginUsr, $senhaUsr, $tipoUsr)
-    {$conexao = connectDB();
+    {$conexao = connectDbLogin();
         $consultDbQuery = getUsuarios($loginUsr);
         if($consultDbQuery) { echo "Usuario existente";}
         else {
